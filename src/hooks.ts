@@ -5,6 +5,7 @@ import {
   PromptExampleFactory,
   UIExampleFactory,
 } from "./modules/examples";
+import { ChatPaneSection } from "./modules/chat";
 import { getString, initLocale } from "./utils/locale";
 import { registerPrefsScripts } from "./modules/preferenceScript";
 import { createZToolkit } from "./utils/ztoolkit";
@@ -30,9 +31,7 @@ async function onStartup() {
 
   UIExampleFactory.registerItemPaneCustomInfoRow();
 
-  UIExampleFactory.registerItemPaneSection();
-
-  UIExampleFactory.registerReaderItemPaneSection();
+  ChatPaneSection.register()
 
   await Promise.all(
     Zotero.getMainWindows().map((win) => onMainWindowLoad(win)),
