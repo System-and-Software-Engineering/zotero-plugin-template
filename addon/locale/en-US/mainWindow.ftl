@@ -1,15 +1,7 @@
-
-# Chat section
-item-section-chat-head-text =
-    .label = Claudtero
-item-section-chat-sidenav-tooltip =
-    .tooltiptext = Claudtero - your AI assistant!
-item-section-chat-fullHeight =
-    .tooltiptext = Full Height
-
-
-
-# Reader sectiion
+item-section-example1-head-text =
+    .label = Plugin Template: Item Info
+item-section-example1-sidenav-tooltip =
+    .tooltiptext = This is Plugin Template section (item info)
 item-section-example2-head-text =
     .label = Plugin Template: Reader [{$status}]
 item-section-example2-sidenav-tooltip =
