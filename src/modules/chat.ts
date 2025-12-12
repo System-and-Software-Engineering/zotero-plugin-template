@@ -110,8 +110,9 @@ function onRender({ body, item }: { body: HTMLElement; item: Zotero.Item }) {
   };
   renderMessages();
 
-  const inputRow = doc.createElement("div");
-  inputRow.className = "chat-pane__input-row";
+  // Outer container for input area
+  const inputArea = doc.createElement("div");
+  inputArea.className = "chat-pane__input-area";
 
   const modelSelect = doc.createElement("select");
   modelSelect.className = "chat-pane__model-select";
@@ -122,6 +123,10 @@ function onRender({ body, item }: { body: HTMLElement; item: Zotero.Item }) {
     modelSelect.appendChild(opt);
   });
   modelSelect.value = "Claude 4.5";
+
+  // Inner wrapper for input + send icon
+  const inputWrapper = doc.createElement("div");
+  inputWrapper.className = "chat-pane__input-wrapper";
 
   // Use textarea for multiline input
   const input = doc.createElement("textarea") as HTMLTextAreaElement;
@@ -165,12 +170,17 @@ function onRender({ body, item }: { body: HTMLElement; item: Zotero.Item }) {
   input.addEventListener("input", updateSendState);
   updateSendState();
 
-  inputRow.appendChild(modelSelect);
-  inputRow.appendChild(input);
-  inputRow.appendChild(sendButton);
+  // Build hierarchy: input wrapper contains input + send button
+  inputWrapper.appendChild(modelSelect);
+  inputWrapper.appendChild(sendButton);
 
+  // Input area contains input wrapper, then model select below
+  inputArea.appendChild(input);
+  inputArea.appendChild(inputWrapper);
+
+  // Main container holds messages + input area
   container.appendChild(messagesBox);
-  container.appendChild(inputRow);
+  container.appendChild(inputArea);
   body.appendChild(container);
 
   // Add resize listener
