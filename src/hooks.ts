@@ -31,7 +31,7 @@ async function onStartup() {
 
   UIExampleFactory.registerItemPaneCustomInfoRow();
 
-  ChatPaneSection.register()
+  ChatPaneSection.registerChatPaneSection();
 
   await Promise.all(
     Zotero.getMainWindows().map((win) => onMainWindowLoad(win)),
